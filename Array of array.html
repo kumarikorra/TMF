@@ -1,0 +1,24 @@
+<html>
+    <head>
+        </head>
+        <body>
+            
+            <p id="output"></p>
+            <script>
+                    let array1= [1,2,3];
+                    let array2= ["a","b","c"];
+                    let array3= [true,false,true];
+                    let mainarray= [array1,array2,array3];
+                    console.log();
+                    function displayArray(){
+                        let output= "mainaArray:<br>";
+                        mainArray.array.forEach((array,index)=>{
+                            output +='Array ${index + 1}:${Array.join(",")}<br>';
+                        });
+                        document.grtElementById("output").innerHTML = output;
+                            
+                        }
+                    
+                </script>
+            </body>
+    </html>
