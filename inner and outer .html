@@ -1,0 +1,44 @@
+<html>
+    <head>
+        </head>
+        <body>
+            </body>
+            <script>
+function outerFunction() {
+    console.log("kumari");
+
+    function innerFunction() {
+        console.log("prasad");
+    }
+    innerFunction(); 
+}
+outerFunction();
+
+//delet the object
+let person = {
+    name:"Rajini",
+     age: 20
+};
+delete person.age;
+
+
+console.log(person);
+
+//change the properties
+let a = {
+    name:"Rajini",
+     age: 20
+};
+ a.name = "akki";
+ a.age = 21;
+console.log(a);
+
+//argument passing
+function b(name,age,password){
+    console.log(name,age,password);
+};
+b("ramya",25,123);
+b("ramya",25);
+b("ramya");
+</script>
+</html>
