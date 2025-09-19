@@ -5,7 +5,6 @@
                 <input type="text" placeholder="search"></br>
                 <button onclick="filter">filter</button></br>
                 <select></br>
-                  <option></option>
                    <option>Afghanistan</option>
                    <option>Albania</option>
                    <option>Algeria</option>
@@ -43,19 +42,20 @@
            <script>
                   function filter(){
                     var filterText = document.getElementById("filterText").value;
-                    var countryNames = document.getElementsByTagName("option");
-                    console.log(countryNames);
+                    var countryNodes = document.getElementsByTagName("option");
+                    console.log(countryNodes);
 
-                    for(i=0;i<countryNames.length;i++){
-                      console.log(countryNames[i].innerText);
-                      var countryName = countryNames[i].innerText;
+                    for(i=0;i<countryNodes.length;i++){
+                      console.log(countryNodes[i].innerText);
+                      var countryName = countryNodes[i].innerText.trim();
                       if(countryName.startsWith(filterText)){
-                        countryNames[i].hidden = false;
+                        countryNodes[i].hidden = false;
                       }else{
-                        countryNames[i].hidden = true;
+                        countryNodes[i].hidden = true;
                       }
                     }
                   }
                   filter();
                   </script>
     </html>
+
