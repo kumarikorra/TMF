@@ -40,5 +40,19 @@ function b(name,age,password){
 b("ramya",25,123);
 b("ramya",25);
 b("ramya");
+
+//15-09 var and let
+var x = 10;
+let y = 20;
+{
+    var x = 30;
+    let y = 40;
+    console.log("inside block");
+    console.log("x",x);
+    console.log("y",y);
+}
+console.log("outside block");
+console.log("x",x);
+console.log("y",y);
 </script>
 </html>
