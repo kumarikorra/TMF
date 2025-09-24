@@ -1,6 +1,4 @@
-
-          
-         <html>
+<html>
     <head>
         </head>
         <body>
@@ -42,9 +40,25 @@
                     document.getElementById("Target-date").value;
                     document.getElementById("Todo-status").value;
 
-                    
+                    if (!title || !description || !targetDate || !status) {
+                        alert("Please fill all the fields");
+                        return;
+                    }
+                    const postedDate = new Date() .toISOString().split('T')[0];
+                    const tableBody =document.getElementById("Todo=body");
+                    const newRow =document.createElement("tr");
 
+                    newRow. innerHTML =`
+                    <td>${todoID++}</td>
+                    <td>${title}</td>
+                    <td>${description}</td>
+                    <td>${targetdate}</td>
+                    <td>${postedDate}</td>
+                    <td>${status}</td>
+                    `;
+                    tableBody.appendChild(newRow);
                 }
                 </script>
 
     </html>
+
