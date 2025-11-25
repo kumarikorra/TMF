@@ -1,0 +1,200 @@
+package Restaurant;
+import java.util.*;
+public class Operations {
+
+	public static void main(String[]args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		 Map<String, Integer> menu = new HashMap<>();
+		boolean ownerLoggedIn = true;
+		
+		while(ownerLoggedIn) {
+			System.out.println("\n--OPERATIONS--");
+			System.out.println("Enter choice");
+			 System.out.println("1. Add Food Item");
+	            System.out.println("2. Remove Food Item");
+	            System.out.println("3. Update Price");
+	            System.out.println("4. Display Menu");
+	            System.out.println("5. Exit");
+	            System.out.print("Enter option: ");
+
+	            int choice = sc.nextInt();
+	            sc.nextLine();  // 
+
+	            switch (choice) {
+
+	            case 1:
+	                System.out.print("Enter food item name: ");
+	                String food = sc.nextLine();
+
+	                System.out.print("Enter price: ");
+	                int price = sc.nextInt();
+
+	                menu.put(food, price);
+	                System.out.println("Item added successfully!");
+	                break;
+
+	            case 2:
+	                System.out.print("Enter food item to remove: ");
+	                String removeItem = sc.nextLine();
+
+	                if (menu.containsKey(removeItem)) {
+	                    menu.remove(removeItem);
+	                    System.out.println("Item removed!");
+	                } else {
+	                    System.out.println("Item not found!");
+	                }
+	                break;
+
+	            case 3:
+	                System.out.print("Enter food item to update: ");
+	                String updateItem = sc.nextLine();
+
+	                if (menu.containsKey(updateItem)) {
+	                    System.out.print("Enter new price: ");
+	                    int newPrice = sc.nextInt();
+	                    menu.put(updateItem, newPrice);
+	                    System.out.println("Price updated!");
+	                } else {
+	                    System.out.println("Item not found!");
+	                }
+	                break;
+
+	            case 4:
+	                System.out.println("\n--- MENU ---");
+	                for (Map.Entry<String, Integer> m : menu.entrySet()) {
+	                    System.out.println(m.getKey() + " : Rs " + m.getValue());
+	                }
+	                break;
+
+	            case 5:
+	                ownerLoggedIn = false;
+	                System.out.println("Exiting...");
+	                break;
+
+	            default:
+	                System.out.println("Invalid option! Try again.");
+	            }
+	        }
+
+	        
+	}
+	           
+	            
+	public static void CustomerOperations(Map<String, Integer> menu) {
+
+        Scanner sc = new Scanner(System.in);
+        Map<String, Integer> order = new HashMap<>();
+
+        boolean customerLoggedIn = true;
+
+        while (customerLoggedIn) {
+            System.out.println("\n---- CUSTOMER MENU ----");
+            System.out.println("1. Display Menu");
+            System.out.println("2. Order Food Item");
+            System.out.println("3. Cancel Food Item");
+            System.out.println("4. Update Food Quantity");
+            System.out.println("5. Display Order");
+            System.out.println("6. Pay Bill");
+            System.out.println("7. Exit");
+            System.out.print("Enter choice: ");
+
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.println("\n--- MENU ---");
+                    if (menu.isEmpty()) System.out.println("Menu is empty.");
+                    else {
+                        for (Map.Entry<String, Integer> m : menu.entrySet()) {
+                            System.out.println(m.getKey() + " : Rs " + m.getValue());
+                        }
+                    }
+                    break;
+
+                case 2:
+                    System.out.print("Enter item to order: ");
+                    String item = sc.nextLine();
+
+                    if (menu.containsKey(item)) {
+                        System.out.print("Enter quantity: ");
+                        int qty = sc.nextInt();
+
+                        order.put(item, qty);
+                        System.out.println("Item added to order!");
+                    } else {
+                        System.out.println("Item not available!");
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter item to cancel: ");
+                    String cancelItem = sc.nextLine();
+
+                    if (order.containsKey(cancelItem)) {
+                        order.remove(cancelItem);
+                        System.out.println("Item removed from order.");
+                    } else {
+                        System.out.println("Item not found in order.");
+                    }
+                    break;
+
+                case 4:
+                    System.out.print("Enter item to update quantity: ");
+                    String update = sc.nextLine();
+
+                    if (order.containsKey(update)) {
+                        System.out.print("Enter new quantity: ");
+                        int newQty = sc.nextInt();
+                        order.put(update, newQty);
+                        System.out.println("Quantity updated!");
+                    } else {
+                        System.out.println("Item not found in order.");
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("\n--- YOUR ORDER ---");
+                    if (order.isEmpty()) System.out.println("No items ordered.");
+                    else {
+                        for (Map.Entry<String, Integer> o : order.entrySet()) {
+                            System.out.println(o.getKey() + " x " + o.getValue());
+                        }
+                    }
+                    break;
+
+                case 6:
+                    int total = 0;
+                    System.out.println("\n--- BILL ---");
+                    for (Map.Entry<String, Integer> o : order.entrySet()) {
+                        int price = menu.get(o.getKey());
+                        int qty = o.getValue();
+                        int cost = price * qty;
+
+                        System.out.println(o.getKey() + " x " + qty + " = Rs " + cost);
+                        total += cost;
+                    }
+                    System.out.println("TOTAL BILL = Rs " + total);
+                    order.clear();
+                    System.out.println("Payment Successful!");
+                    break;
+
+                case 7:
+                    customerLoggedIn = false;
+                    System.out.println("Exiting Customer Operations...");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
+    }
+	
+	}
+
+
+
+
+
